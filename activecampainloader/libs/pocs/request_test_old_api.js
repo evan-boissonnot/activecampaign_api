@@ -1,6 +1,6 @@
 const request = require("request");
 
-const domain = 'papaetpatron';
+const domain = 'test';
 let url = `http://${domain}.activehosted.com/admin/api.php`;
 
 const key = '';
