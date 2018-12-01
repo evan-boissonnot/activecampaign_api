@@ -1,0 +1,23 @@
+{
+  "name": "activecampaign_api",
+  "version": "1.0.0",
+  "description": "web api to use activecampaign api to send emails",
+  "main": "app.js",
+  "dependencies": {
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evan-boissonnot/activecampaign_api.git"
+  },
+  "author": "evan-boissonnot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evan-boissonnot/activecampaign_api/issues"
+  },
+  "homepage": "https://github.com/evan-boissonnot/activecampaign_api#readme"
+}
