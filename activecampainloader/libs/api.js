@@ -15,7 +15,8 @@ class Api {
 
     // Get contact by id
     getContact(contactId) {
-        throw new Exception();
+        return senderFactory.getOne("getContact", this._domainName, this._authToken)
+                            .execute(`contacts/${contactId}`);
     }
 
     // Load all campaigns

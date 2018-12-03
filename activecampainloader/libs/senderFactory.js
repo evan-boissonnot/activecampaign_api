@@ -9,6 +9,7 @@ class SenderFactory {
         this._sendersByMethod = {}
         this._sendersByMethod["loadCampaigns"] = lastVersionSender;
         this._sendersByMethod["addContact"] = lastVersionSender;
+        this._sendersByMethod["getContact"] = lastVersionSender;
         this._sendersByMethod["addContactToAutomation"] = lastVersionSender;
     }
 
