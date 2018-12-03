@@ -10,7 +10,7 @@ class Api {
     // Sends new request to add new contact, with email required
     addContact(item) {
         return senderFactory.getOne("addContact", this._domainName, this._authToken)
-                            .execute("contacts", "POST", { contact: item });
+                            .execute("contact/sync", "POST", { contact: item });
     }
 
     // Get contact by id
