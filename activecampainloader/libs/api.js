@@ -33,13 +33,19 @@ class Api {
         else
             contactPromise = this.getContact(contact.id);
 
-        contactPromise.then((contactResult) => {
-            senderFactory.getOne("addContactToOneAutomation", this._domainName, this._authToken)
-                         .execute("contactAutomations", "POST", 
-                                  { 
-                                      contact: contactResult.id,
-                                      automation: automationId
-                                  });
+        console.log(contactPromise);
+
+        return contactPromise.then((contactResult) => {
+            console.log("on passe par la ? : " + contactResult);
+            console.log(contactResult);
+            return senderFactory.getOne("addContactToAutomation", this._domainName, this._authToken)
+                                .execute("contactAutomations", "POST", 
+                                        { 
+                                            contactAutomation: {
+                                                contact: contactResult.id,
+                                                automation: automationId
+                                            }
+                                        });
         });
     }
 }

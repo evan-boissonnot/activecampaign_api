@@ -60,6 +60,8 @@ class Sender {
         request(options, function (error, response, body) {
             if (error) reject(error);
 
+            console.log(options);
+
             var resultAsJson = JSON.parse(body);
             resolve(resultAsJson); 
           });
