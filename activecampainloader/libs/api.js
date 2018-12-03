@@ -36,13 +36,11 @@ class Api {
         console.log(contactPromise);
 
         return contactPromise.then((contactResult) => {
-            console.log("on passe par la ? : " + contactResult);
-            console.log(contactResult);
             return senderFactory.getOne("addContactToAutomation", this._domainName, this._authToken)
                                 .execute("contactAutomations", "POST", 
                                         { 
                                             contactAutomation: {
-                                                contact: contactResult.id,
+                                                contact: contactResult.contact.id,
                                                 automation: automationId
                                             }
                                         });
