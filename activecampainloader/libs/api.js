@@ -35,19 +35,36 @@ class Api {
 
     // Add an existing custom field to an existing contact
     addCustomFieldToContact(contactId, customFieldId, value) {
+        console.log('======= addCustomFieldToContact =========');
         return senderFactory.getOne("addCustomFieldToContact", this._domainName, this._authToken)
                                    .execute("fieldValues", "POST", 
                                    { 
                                        fieldValue: {
-                                           contact: contactId,
-                                           field: customFieldId,
+                                           contact: parseInt(contactId),
+                                           field: parseInt(customFieldId),
                                            value: value
                                        }
                                    });
     }
 
-    addContactWithCustomFieldToAutomation(contact, fieldId, automationId) {
-        throw new Exception("a finir");
+    // Create a new contact and add new custom field to him, 
+    // and after, add the contact to automation
+    addContactWithCustomFieldToAutomation(contact, fieldId, fieldValue, automationId) {
+        const contactPromise = this.addContact(contact);
+
+        console.log('======= addContactWithCustomFieldToAutomation =========');
+
+        contactPromise.then((contactResult) => this.addCustomFieldToContact(contactResult.contact.id, fieldId, fieldValue));
+        contactPromise.then((contactResult) => senderFactory.getOne("addContactToAutomation", this._domainName, this._authToken)
+                                                            .execute("contactAutomations", "POST", 
+                                                                    { 
+                                                                        contactAutomation: {
+                                                                            contact: contactResult.contact.id,
+                                                                            automation: automationId
+                                                                        }
+                                                                    }));
+
+        return contactPromise;
     }
 
     // Add a contact to automation
