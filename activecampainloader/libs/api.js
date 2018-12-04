@@ -9,6 +9,7 @@ class Api {
     
     // Sends new request to add new contact, with email required
     addContact(item) {
+        console.log('1. ======= addContact =========');
         return senderFactory.getOne("addContact", this._domainName, this._authToken)
                             .execute("contact/sync", "POST", { contact: item });
     }
@@ -34,15 +35,15 @@ class Api {
     }
 
     // Add an existing custom field to an existing contact
-    addCustomFieldToContact(contactId, customFieldId, value) {
-        console.log('======= addCustomFieldToContact =========');
+    addCustomFieldToContact(contactId, customFieldId, fieldValue) {
+        console.log('2. ======= addCustomFieldToContact =========');
         return senderFactory.getOne("addCustomFieldToContact", this._domainName, this._authToken)
                                    .execute("fieldValues", "POST", 
                                    { 
                                        fieldValue: {
                                            contact: parseInt(contactId),
                                            field: parseInt(customFieldId),
-                                           value: value
+                                           value: fieldValue
                                        }
                                    });
     }
@@ -50,9 +51,9 @@ class Api {
     // Create a new contact and add new custom field to him, 
     // and after, add the contact to automation
     addContactWithCustomFieldToAutomation(contact, fieldId, fieldValue, automationId) {
-        const contactPromise = this.addContact(contact);
+        console.log('0. ======= addContactWithCustomFieldToAutomation =========');
 
-        console.log('======= addContactWithCustomFieldToAutomation =========');
+        const contactPromise = this.addContact(contact);        
 
         contactPromise.then((contactResult) => this.addCustomFieldToContact(contactResult.contact.id, fieldId, fieldValue));
         contactPromise.then((contactResult) => senderFactory.getOne("addContactToAutomation", this._domainName, this._authToken)
@@ -69,12 +70,10 @@ class Api {
 
     // Add a contact to automation
     addContactToAutomation(contact, automationId, isCreatingContact=true) {
-        var contactPromise = null;
+        var contactPromise = new Promise( () => {});
 
         if(isCreatingContact)
             contactPromise = this.addContact(contact);
-        else
-            contactPromise = this.getContact(contact.id);
 
         console.log(contactPromise);
 
