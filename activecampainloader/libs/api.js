@@ -25,6 +25,31 @@ class Api {
                             .execute("campaigns");
     }    
 
+    // Create a new custom field
+    // WARNING : just creating a custom field, not ttached to a contact
+    // If you want to add the new custom field to a contact, use after addCustomFieldToContact
+    addCustomField(item) {
+        return senderFactory.getOne("addCustomField", this._domainName, this._authToken)
+                                   .execute("fields", "POST", { field: item });
+    }
+
+    // Add an existing custom field to an existing contact
+    addCustomFieldToContact(contactId, customFieldId, value) {
+        return senderFactory.getOne("addCustomFieldToContact", this._domainName, this._authToken)
+                                   .execute("fieldValues", "POST", 
+                                   { 
+                                       fieldValue: {
+                                           contact: contactId,
+                                           field: customFieldId,
+                                           value: value
+                                       }
+                                   });
+    }
+
+    addContactWithCustomFieldToAutomation(contact, fieldId, automationId) {
+        throw new Exception("a finir");
+    }
+
     // Add a contact to automation
     addContactToAutomation(contact, automationId, isCreatingContact=true) {
         var contactPromise = null;
