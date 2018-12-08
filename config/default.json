@@ -1,0 +1,8 @@
+{
+    "api": {
+        "activecampaign": {
+            "key": "test_key",
+            "domain": "test_domain"
+        }
+    }
+}
