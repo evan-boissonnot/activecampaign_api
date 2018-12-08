@@ -11,6 +11,8 @@ class SenderFactory {
         this._sendersByMethod["addContact"] = lastVersionSender;
         this._sendersByMethod["getContact"] = lastVersionSender;
         this._sendersByMethod["addContactToAutomation"] = lastVersionSender;
+        this._sendersByMethod["addCustomField"] = lastVersionSender;
+        this._sendersByMethod["addCustomFieldToContact"] = lastVersionSender;
     }
 
     // Returns the best sender to request activecampaign api
