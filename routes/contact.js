@@ -8,7 +8,7 @@ router.post('/', function(req, res, next) {
     if(toBeAddedContact && toBeAddedContact.email) {
         status = 200;
 
-        throw new Exception("07/12/2018, A finir");
+        throw new Error("07/12/2018, A finir");
     }
 
     res.status(status).send({
