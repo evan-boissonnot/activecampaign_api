@@ -1,8 +1,10 @@
 {
     "api": {
         "activecampaign": {
-            "key": "test_key",
-            "domain": "test_domain"
+            "automation": {
+                "id": 274,
+                "fieldId": 11
+            }
         }
     }
 }
