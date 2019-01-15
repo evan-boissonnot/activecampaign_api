@@ -1,12 +1,7 @@
-function checkSetEnvironmentVariable(variableName) {
-  let variable = process.env[variableName];
+var motor = require('./packages/core/motor/motor');
 
-  if(! variable || variable == null || variable === "")
-    throw new Error(`Environment variable ${variableName} not set`);
-}
-
-checkSetEnvironmentVariable("ACTIVECAMPAIGN_DOMAIN");
-checkSetEnvironmentVariable("ACTIVECAMPAIGN_TOKEN");
+motor.checkSetEnvironmentVariable("ACTIVECAMPAIGN_DOMAIN");
+motorcheckSetEnvironmentVariable("ACTIVECAMPAIGN_TOKEN");
 
 var createError = require('http-errors');
 var express = require('express');

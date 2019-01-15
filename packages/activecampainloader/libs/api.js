@@ -55,6 +55,8 @@ class Api {
 
         const contactPromise = this.addContact(contact);        
 
+        // test : https://github.com/ActiveCampaign/activecampaign-api-nodejs/issues/39 ??
+
         contactPromise.then((contactResult) => this.addCustomFieldToContact(contactResult.contact.id, fieldId, fieldValue));
         contactPromise.then((contactResult) => senderFactory.getOne("addContactToAutomation", this._domainName, this._authToken)
                                                             .execute("contactAutomations", "POST", 
