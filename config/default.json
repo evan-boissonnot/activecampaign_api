@@ -1,9 +1,14 @@
 {
     "api": {
         "activecampaign": {
+            "field": {
+                "id": 11
+            },
             "automation": {
-                "id": 274,
-                "fieldId": 11
+                "id": 274
+            },
+            "list": {
+                "id": 14
             }
         }
     }

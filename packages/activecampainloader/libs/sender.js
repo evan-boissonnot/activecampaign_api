@@ -27,6 +27,7 @@ class Sender {
     }
 
     prepareUrl(endOfUrl) {
+        console.log('======> ?? ' + endOfUrl);
         var url = `https://${this._domainName}.api-us1.com/api/3/${endOfUrl}`;
 
         return url;

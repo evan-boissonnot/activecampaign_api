@@ -1,7 +1,6 @@
 var motor = require('./packages/core/motor/motor');
 
-motor.checkSetEnvironmentVariable("ACTIVECAMPAIGN_DOMAIN");
-motorcheckSetEnvironmentVariable("ACTIVECAMPAIGN_TOKEN");
+motor.run();
 
 var createError = require('http-errors');
 var express = require('express');
