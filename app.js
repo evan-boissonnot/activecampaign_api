@@ -1,4 +1,4 @@
-const motor = require('./packages/core/motor/motor');
+const Motor = require('./packages/core/motor/motor');
 
 const log4js = require('log4js');
 const createError = require('http-errors');
@@ -14,7 +14,8 @@ const contactRouter = require('./routes/contact');
 
 const app = express();
 
-motor.run(log4js.getLogger('app'));
+app.locals.motor = new Motor(log4js.getLogger('app'));
+app.locals.motor.run();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -44,7 +45,7 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  motor.logError(err.message);
+  app.locals.motor.logError(err.message);
 
   // render the error page
   res.status(err.status || 500);

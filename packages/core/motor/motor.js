@@ -1,9 +1,9 @@
 
 /// <summary>Use this class inside whole project</summary>
 class Motor {
-    constructor() {
+    constructor(logger) {
         this.configure();
-        this._logger = null;
+        this._logger = logger;
     }
 
     /// Verify existing environment variable
@@ -15,9 +15,8 @@ class Motor {
     }
 
     /// <summary>Run the motor </summary>
-    run(logger) {
+    run() {
         this.verifyExpectedValues();
-        this._logger = logger;
     }
 
     /// <summary>Verify expected values</summary>
@@ -37,6 +36,6 @@ class Motor {
     }
 }
 
-module.exports = new Motor();
+module.exports = Motor;
 
 
