@@ -1,5 +1,10 @@
+
 /// <summary>Use this class inside whole project</summary>
 class Motor {
+    constructor() {
+        this.configure();
+        this._logger = null;
+    }
 
     /// Verify existing environment variable
     checkSetEnvironmentVariable(variableName) {
@@ -10,14 +15,25 @@ class Motor {
     }
 
     /// <summary>Run the motor </summary>
-    run() {
+    run(logger) {
         this.verifyExpectedValues();
+        this._logger = logger;
     }
 
     /// <summary>Verify expected values</summary>
     verifyExpectedValues() {
         this.checkSetEnvironmentVariable("ACTIVECAMPAIGN_DOMAIN");
         this.checkSetEnvironmentVariable("ACTIVECAMPAIGN_TOKEN");
+    }
+
+    configure() {
+    }
+
+    /*
+    * Log error with current logger
+    */
+    logError(message, obj = null) {
+        this._logger.error(message, obj);
     }
 }
 

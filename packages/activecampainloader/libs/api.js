@@ -14,7 +14,9 @@ class Api {
         this._customField = new CustomFieldController(config);
     }
     
-    // Sends new request to add new contact, with email required
+    /*
+    * Sends new request to add new contact, with email required
+    */
     addContact(item) {
         return this._contact.addContact(item);
     }

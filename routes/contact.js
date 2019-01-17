@@ -35,7 +35,7 @@ router.post('/', function(req, res, next) {
 
         activecampainAPI.addContactInList(toBeAdded.contact, 
                                           { id: listId },
-                                          { id: fieldId, value: toBeAdded.url })
+                                          { id: fieldId, value: toBeAdded.contact.url })
                         .then((result) => {
                             res.status(200).send({
                                 item: result,

@@ -74,6 +74,7 @@ class ContactController extends BaseController {
                                                                             status: ADDING_STATE
                                                                         }
                                                                     }));
+        return contactPromise;
 
     }
 }
