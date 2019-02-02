@@ -1,0 +1,15 @@
+{
+    "api": {
+        "activecampaign": {
+            "field": {
+                "id": 11
+            },
+            "automation": {
+                "id": 274
+            },
+            "list": {
+                "id": 14
+            }
+        }
+    }
+}

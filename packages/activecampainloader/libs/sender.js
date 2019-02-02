@@ -27,6 +27,7 @@ class Sender {
     }
 
     prepareUrl(endOfUrl) {
+        console.log('======> ?? ' + endOfUrl);
         var url = `https://${this._domainName}.api-us1.com/api/3/${endOfUrl}`;
 
         return url;
@@ -60,9 +61,15 @@ class Sender {
         request(options, function (error, response, body) {
             if (error) reject(error);
 
+            console.log("BEGIN------_baseExecute-----");
+            console.log(">> OPTIONS");
             console.log(options);
 
             var resultAsJson = JSON.parse(body);
+            console.log(">> RESULT");
+            console.log(resultAsJson);
+
+            console.log("END ------_baseExecute-----");
             resolve(resultAsJson); 
           });
     }
